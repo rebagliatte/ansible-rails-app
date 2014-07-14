@@ -1,22 +1,35 @@
 # A small Rails server playbook for Ansible
 
-**Bastardised from https://github.com/dodecaphonic/ansible-rails-app**
-
 It installs:
 
-- Ruby 2.1
-- PostgreSQL
-- nginx
-- Puma (jungle)
+* Ruby 2.1
+* PostgreSQL
+* nginx
+* Puma (jungle)
 
-1. Change the app name and deploy directory in <code>vars/defaults.yml</code>.
-2. Rename `hosts.example` to `hosts` and change it to your hosts.
+Instructions:
 
-To run:
+1. Copy configuration files to the right locations and update them with your own settings
 
-    $ ansible-playbook -i hosts ruby-webapp.yml -t ruby,deploy,postgresql,nginx
-    $ <deploy your app>
-    $ ansible-playbook -i hosts ruby-webapp.yml -t puma
+  ```
+  cp docs/defaults.yml.example vars/defaults.yml
+  cp docs/hosts.example hosts
+  ```
 
-There is an example Capistrano `deploy.rb` in this repository that you can use too.
+2. Provision your servers
 
+  ```
+  ansible-playbook -i hosts ruby-webapp.yml -t ruby,deploy,postgresql,nginx
+  ```
+
+3. Deploy your application
+
+  ```
+  cap deploy
+  ```
+
+4. Start puma
+
+  ```
+  ansible-playbook -i hosts ruby-webapp.yml -t puma
+  ```
