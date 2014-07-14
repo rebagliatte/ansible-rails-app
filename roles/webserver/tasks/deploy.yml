@@ -17,6 +17,3 @@
     - config
     - config/puma
   tags: shared
-
-- name: Install database.yml
-  template: src=database.yml.j2 dest={{deploy_directory}}/shared/config/database.yml force=yes mode=755 owner=deploy
