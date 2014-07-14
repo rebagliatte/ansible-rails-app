@@ -2,11 +2,11 @@ webserver_name: example.com
 deploy_directory: ~/apps/example
 app_name: example
 
-rubyTmpDir: /usr/local/src
-rubyUrl: http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
-rubyCompressedFile: ruby-2.1.2.tar.gz
-rubyName: ruby-2.1.2
-tmpRubyPath: "{{rubyTmpDir}}/{{rubyName}}"
+ruby_tmp_dir: /usr/local/src
+ruby_url: http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
+ruby_compressed_file: ruby-2.1.2.tar.gz
+ruby_name: ruby-2.1.2
+tmp_ruby_path: "{{ruby_tmp_dir}}/{{ruby_name}}"
 
 db_name: example_production
 db_user: deployer

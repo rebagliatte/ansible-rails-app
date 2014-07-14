@@ -3,8 +3,8 @@
 - name: upgrade
   action: apt update_cache=yes upgrade=yes
 
-- name: install ruby dependencies 
-  action: apt pkg={{item}} state=installed
+- name: install ruby dependencies
+  action: apt pkg={{ item }} state=installed
   with_items:
     - build-essential
     - automake
@@ -25,8 +25,8 @@
     - libxslt1-dev
     - curl
 
-- name: Install app dependencies 
-  action: apt pkg={{item}} state=installed
+- name: install app dependencies
+  action: apt pkg={{ item }} state=installed
   with_items:
     - libpq-dev
     - nodejs
@@ -35,22 +35,22 @@
 
 # Install correct version of ruby from source
 - name: ruby-from-src | ensure directory temporary ruby download directory is present
-  file: state=directory path={{rubyTmpDir}}
+  file: state=directory path={{ ruby_tmp_dir }}
 
-- name: ruby-from-src | Download ruby source 
-  get_url: url={{rubyUrl}} dest={{rubyTmpDir}}
+- name: ruby-from-src | download ruby source
+  get_url: url={{ ruby_url }} dest={{ ruby_tmp_dir }}
 
 - name: ruby-from-src | ensure ruby is extracted
-  command: tar -xf {{rubyCompressedFile}} chdir={{rubyTmpDir}} creates={{tmpRubyPath}}
+  command: tar -xf {{ ruby_compressed_file }} chdir={{ ruby_tmp_dir }} creates={{ tmp_ruby_path }}
 
 - name: ruby-from-src | ensure ruby is configured
-  command: ./configure chdir={{tmpRubyPath}} creates={{tmpRubyPath}}/Makefile
+  command: ./configure chdir={{ tmp_ruby_path }} creates={{ tmp_ruby_path }}/Makefile
 
 - name: ruby-from-src | ensure ruby is compiled
-  command: make chdir={{tmpRubyPath}} creates={{tmpRubyPath}}/ruby
+  command: make chdir={{ tmp_ruby_path }} creates={{ tmp_ruby_path }}/ruby
 
 - name: ruby-from-src | ensure ruby is installed
-  command: make install chdir={{tmpRubyPath}} creates=/usr/local/bin/ruby
+  command: make install chdir={{ tmp_ruby_path }} creates=/usr/local/bin/ruby
 
-- name: Install Bundler
+- name: install Bundler
   command: gem install bundler
