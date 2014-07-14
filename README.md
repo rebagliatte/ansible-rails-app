@@ -2,7 +2,7 @@
 
 It installs:
 
-* Ruby 2.1
+* Ruby 2.1.2
 * PostgreSQL
 * nginx
 * Puma (jungle)
