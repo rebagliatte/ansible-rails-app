@@ -1,12 +1,13 @@
-## webapp
+webserver_name: example.com
+deploy_directory: ~/apps/example
+app_name: example
 
-webserver_name: spree.ryanbigg.com
-deploy_directory: /data/spree
-app_name: spree
-
-## stolen from https://github.com/jgrowl/ansible-playbook-ruby-from-src
 rubyTmpDir: /usr/local/src
-rubyUrl: http://cache.ruby-lang.org/pub/ruby/2.1.2/ruby-2.1.2.0.tar.gz
-rubyCompressedFile: ruby-2.1.2.0.tar.gz
-rubyName: ruby-2.1.2.0
+rubyUrl: http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
+rubyCompressedFile: ruby-2.1.2.tar.gz
+rubyName: ruby-2.1.2
 tmpRubyPath: "{{rubyTmpDir}}/{{rubyName}}"
+
+db_name: example_production
+db_user: deployer
+db_password: supersecret

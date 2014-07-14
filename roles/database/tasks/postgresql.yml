@@ -22,12 +22,17 @@
 - name: Restart PostgreSQL
   command: service postgresql restart
 
-- name: create the postgresql user for application
-  postgresql_user: name=deploy
+- name: Ensure database is created
+  postgresql_db: name={{ db_name }}
   sudo: yes
   sudo_user: postgres
 
-- name: create the postgresql database for application
-  postgresql_db: name=app_{{app_name}} owner=deploy state=present
+- name: Ensure user has access to database
+  postgresql_user: db={{ db_name }} name={{ db_user }} password={{ db_password }} priv=ALL
+  sudo: yes
+  sudo_user: postgres
+
+- name: Ensure user does not have unnecessary privilege
+  postgresql_user: name={{ db_user }} role_attr_flags=NOSUPERUSER,NOCREATEDB
   sudo: yes
   sudo_user: postgres
