@@ -9,7 +9,7 @@ on_worker_boot do
   ActiveRecord::Base.establish_connection(ENV["DATABASE_URL"] || YAML.load_file("#{cwd}/config/database.yml")["production"])
 end
 
-bind 'unix://{{deploy_directory}}/shared/tmp/sockets/puma_spree.sock'
+bind 'unix://{{deploy_directory}}/shared/tmp/sockets/puma_{{ app_name }}.sock'
 environment 'production'
 pidfile "{{deploy_directory}}/shared/tmp/puma.pid"
 state_path "{{deploy_directory}}/shared/tmp/sockets/puma.state"
