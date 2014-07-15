@@ -1,12 +1,12 @@
 upstream {{ app_name }} {
-  server unix://{{deploy_directory}}/shared/tmp/sockets/puma_{{ app_name }}.sock;
+  server unix://{{ deploy_directory }}/shared/tmp/sockets/puma_{{ app_name }}.sock;
 }
 
 server {
   gzip on;
   listen 80;
 
-  gzip_types text/plain text/css application/x-javascript text/xml application/xml application/xml+rss text/javascript application/json;                                                                      
+  gzip_types text/plain text/css application/x-javascript text/xml application/xml application/xml+rss text/javascript application/json;
   server_name {{ webserver_name }};
   root {{ deploy_directory }}/current/public;
 
@@ -22,7 +22,7 @@ server {
     expires 1y;
     log_not_found off;
   }
-  
+
   location ~ ^/(assets|images|javascripts|stylesheets|swfs|system)/ {
     gzip_static on;
     expires     max;
@@ -31,5 +31,5 @@ server {
     add_header  ETag "";
 
     break;
-  }  
+  }
 }

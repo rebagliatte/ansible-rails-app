@@ -4,10 +4,10 @@
 - name: Remove the default app
   command: rm -rf /etc/nginx/sites-enabled/default
 
-- name: Remove the app's config, if exists
+- name: Remove the default app config if exists
   command: rm -rf /etc/nginx/sites-enabled/default
 
-- name: Remove the app's symlink, if exists
+- name: Remove the app's symlink if exists
   command: rm -rf /etc/nginx/sites-enabled/{{ app_name }}
 
 - name: Configure nginx for the app

@@ -1,13 +1,15 @@
 webserver_name: example.com
-deploy_directory: ~/apps/example
-app_name: example
+app_name: my_app
+deploy_user: my_user
+deploy_directory: "/home/{{ deploy_user }}/apps/{{ app_name }}"
+rails_env: staging
 
 ruby_tmp_dir: /usr/local/src
 ruby_url: http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
 ruby_compressed_file: ruby-2.1.2.tar.gz
 ruby_name: ruby-2.1.2
-tmp_ruby_path: "{{ruby_tmp_dir}}/{{ruby_name}}"
+tmp_ruby_path: "{{ ruby_tmp_dir }}/{{ ruby_name }}"
 
-db_name: example_production
+db_name: example
 db_user: deployer
 db_password: supersecret

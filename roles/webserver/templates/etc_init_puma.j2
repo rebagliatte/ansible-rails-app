@@ -27,10 +27,10 @@ setgid deploy
 respawn
 respawn limit 3 30
 
-instance {{deploy_directory}}/current
+instance {{ deploy_directory }}/current
 
 script
-cd {{deploy_directory}}/current
+cd {{ deploy_directory }}/current
 logger -t puma "Starting server: $app"
-exec bundle exec puma -C {{deploy_directory}}/current/config/puma/production.rb
+exec bundle exec puma -C {{ deploy_directory }}/current/config/puma/{{ rails_env }}.rb
 end script

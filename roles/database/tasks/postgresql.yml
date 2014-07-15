@@ -1,5 +1,5 @@
 - name: Install PostgreSQL dependencies
-  action: apt pkg={{item}} state=latest
+  action: apt pkg={{ item }} state=latest
   with_items:
     - python-pycurl
     - python-psycopg2
