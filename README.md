@@ -4,8 +4,8 @@ It installs:
 
 * Ruby 2.1.2
 * PostgreSQL
-* nginx
-* Puma (jungle)
+* Nginx
+* Puma
 
 Instructions:
 
@@ -22,13 +22,15 @@ Instructions:
   ansible-playbook -i hosts ruby-webapp.yml -t ruby,deploy,postgresql,nginx
   ```
 
-3. Deploy your application
+3. Create a shared directory and copy sensitive files to the server like database.yml through scp
+
+4. Deploy your application
 
   ```
   cap deploy
   ```
 
-4. Start puma
+5. Start puma
 
   ```
   ansible-playbook -i hosts ruby-webapp.yml -t puma
