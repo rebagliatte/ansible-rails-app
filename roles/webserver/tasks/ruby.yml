@@ -33,7 +33,6 @@
     - imagemagick
   tags: package
 
-# Install correct version of ruby from source
 - name: ruby-from-src | ensure directory temporary ruby download directory is present
   file: state=directory path={{ ruby_tmp_dir }}
 

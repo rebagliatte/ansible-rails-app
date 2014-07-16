@@ -29,9 +29,3 @@ Instructions:
   ```
   cap deploy
   ```
-
-5. Start puma
-
-  ```
-  ansible-playbook -i hosts ruby-webapp.yml -t puma
-  ```
