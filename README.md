@@ -19,7 +19,7 @@ Instructions:
 2. Provision your servers
 
   ```
-  ansible-playbook -i hosts ruby-webapp.yml -t ruby,deploy,postgresql,nginx
+  ansible-playbook -i hosts ruby-webapp.yml -t ruby,user,postgresql,nginx
   ```
 
 3. Create a shared directory and copy sensitive files to the server like database.yml through scp
