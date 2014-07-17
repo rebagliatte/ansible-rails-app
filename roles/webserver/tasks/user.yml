@@ -1,4 +1,7 @@
-- name: Create deployment user
+- name: create deployment user
   user: name={{ deploy_user }} comment="Application deployment user"
 
 - authorized_key: user={{ deploy_user }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+- name: ensure config directory is present
+  command: su -c "mkdir -p {{ config_directory }}" {{ deploy_user }}

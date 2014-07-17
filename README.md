@@ -24,7 +24,7 @@ Instructions:
   ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.0.2.0
   ```
 
-  Where `192.0.2.0` is your server's IP. Repeat this step for each server you want to provision.
+  Where `192.0.2.0` is your server's IP or IP alias. Repeat this step for each server you want to provision.
 
 4. Make sure ansible can access staging properly.
 
@@ -41,13 +41,19 @@ Instructions:
   The `-i` modifier specifies the inventory file you'll use. Possible values are `staging` and `production` for this repo.
   The `-t` modifier specifies the tags you'll excecute and their order.
 
-6. Deploy your application.
+6. Copy sensitive files like database yml to the shared folder on your server through scp.
+
+  ```
+  scp ~/my/local/path/database.yml deploy@192.0.2.0:/home/deploy/apps/myapp/shared/config/database.yml
+  ```
+
+7. Deploy your application.
 
   ```
   cap staging deploy
   ```
 
-7. After you are all set you can excecute the same steps on your production servers.
+8. After you are all set you can excecute the same steps on your production servers.
 
   ```
   ansible-playbook -i production site.yml -t ruby,user,postgresql,nginx
