@@ -1,6 +1,6 @@
 # Variables
-group_vars/all
+/group_vars/*
 
 # Inventory files
-production
-staging
+/production
+/staging

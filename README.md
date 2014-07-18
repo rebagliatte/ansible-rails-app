@@ -13,9 +13,8 @@ Instructions:
 2. Copy the variable and inventory files to the right locations and update them with your own settings.
 
   ```
-  cp docs/all group_vars/all
-  cp docs/production production
-  cp docs/staging staging
+  cp -a docs/group_vars/. group_vars
+  cp -a docs/inventories/. .
   ```
 
 3. Add your ssh keys to your servers.
