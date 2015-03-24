@@ -10,7 +10,7 @@ server {
   server_name {{ webserver_name }};
   root {{ deploy_directory }}/current/public;
 
-  client_max_body_size 2M
+  client_max_body_size 2M;
 
   location / {
     proxy_pass http://{{ app_name }}; # match the name of upstream directive which is defined above
